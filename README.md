@@ -4,8 +4,7 @@ An Ansible Role that installs [SonarQube](http://www.sonarqube.org/) on RedHat/C
 
 ## Disclaimer
 
-This project cloned from geerlingguy/ansible-role-sonar.
-But have done lots of refactoring to fit my own purposes, e.g.
+This project cloned from geerlingguy/ansible-role-sonar but have done some refactoring to fit my own purposes, e.g.
 - rename files from yml to yaml
 - change from mysql to pgsql
 - add sonar plugin install and upgrade
