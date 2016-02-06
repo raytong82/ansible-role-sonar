@@ -4,6 +4,7 @@
     dest: /usr/local/sonar/conf/sonar.properties
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
+    become: yes
   notify: restart sonar
   with_items:
     - regexp: "^sonar.jdbc.username"
