@@ -2,7 +2,6 @@
 - name: Configure SonarQube JDBC settings.
   lineinfile:
     dest: /usr/local/sonar/conf/sonar.properties
-    mode: 0666
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
   notify: restart sonar
