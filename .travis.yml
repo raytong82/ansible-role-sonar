@@ -5,6 +5,9 @@ python: "2.7"
 services:
   - postgresql
 
+notifications:
+  email: false
+
 env:
   - SITE=test.yaml
 
