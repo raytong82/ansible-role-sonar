@@ -1,8 +1,14 @@
 # Ansible Role: SonarQube
 
-[![Build Status](https://travis-ci.org/geerlingguy/ansible-role-sonar.svg?branch=master)](https://travis-ci.org/geerlingguy/ansible-role-sonar)
-
 An Ansible Role that installs [SonarQube](http://www.sonarqube.org/) on RedHat/CentOS and Debian/Ubuntu Linux servers.
+
+## Disclaimer
+
+This project cloned from geerlingguy/ansible-role-sonar.
+But have done lots of refactoring to fit my own purposes, e.g.
+- rename files from yml to yaml
+- change from mysql to pgsql
+- add sonar plugin install and upgrade
 
 ## Requirements
 
@@ -21,24 +27,19 @@ Directory where downloaded files will be temporarily stored.
 
 The URL from which SonarQube will be downloaded, and the resulting directory name (should match the download archive, without the archive extension).
 
-    sonar_mysql_username: sonar
-    sonar_mysql_password: sonar
+    sonar_jdbc_username: sonar
+    sonar_jdbc_password: sonar
     
-    sonar_mysql_host: localhost
-    sonar_mysql_port: "3306"
-    sonar_mysql_database: sonar
+    sonar_jdbc_host: localhost
+    sonar_jdbc_port: "3306"
+    sonar_jdbc_database: sonar
     
-    sonar_mysql_allowed_hosts:
+    sonar_jdbc_allowed_hosts:
       - 127.0.0.1
       - ::1
       - localhost
 
-JDBC settings for a connection to a MySQL database. Defaults presume the database resides on localhost and is only accessible on the SonarQube server itself.
-
-## Dependencies
-
-  - geerlingguy.java
-  - geerlingguy.mysql
+JDBC settings for a connection to a jdbc database. Defaults presume the database resides on localhost and is only accessible on the SonarQube server itself.
 
 ## Example Playbook
 
@@ -50,6 +51,6 @@ JDBC settings for a connection to a MySQL database. Defaults presume the databas
 
 MIT / BSD
 
-## Author Information
+## Original Author Information
 
 This role was created in 2014 by [Jeff Geerling](http://jeffgeerling.com/), author of [Ansible for DevOps](http://ansiblefordevops.com/).

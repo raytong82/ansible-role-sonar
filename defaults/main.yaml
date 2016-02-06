@@ -1,0 +1,16 @@
+---
+workspace: /root
+
+# Default to the latest LTS release.
+sonar_download_url: http://dist.sonar.codehaus.org/sonarqube-5.1.2.zip
+sonar_version_directory: sonarqube-5.1.2
+
+# jdbc database connection details.
+sonar_jdbc_username: sonar
+sonar_jdbc_password: sonar
+
+sonar_jdbc_host: localhost
+sonar_jdbc_port: "5432"
+sonar_jdbc_database: sonar
+
+sonar_web_port: "39000"
