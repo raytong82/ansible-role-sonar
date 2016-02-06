@@ -6,7 +6,7 @@ services:
   - postgresql
 
 env:
-  - SITE:test.yaml
+  - SITE=test.yaml
 
 before_install:
   - sudo apt-get update -qq
