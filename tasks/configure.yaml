@@ -2,15 +2,16 @@
 - name: Configure SonarQube JDBC settings.
   lineinfile:
     dest: /usr/local/sonar/conf/sonar.properties
+    mode: 0644
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
   notify: restart sonar
   with_items:
     - regexp: "^sonar.jdbc.username"
       line: "sonar.jdbc.username={{ sonar_jdbc_username }}"
-#    - regexp: "^sonar.jdbc.password"
-#      line: "sonar.jdbc.password={{ sonar_jdbc_password }}"
-#    - regexp: "^sonar.jdbc.url"
-#      line: "sonar.jdbc.url=jdbc:postgresql://{{ sonar_jdbc_host }}:{{ sonar_jdbc_port }}/{{ sonar_jdbc_database }}"
-#    - regexp: "^sonar.web.port"
-#      line: "sonar.web.port={{ sonar_web_port }}"
+    - regexp: "^sonar.jdbc.password"
+      line: "sonar.jdbc.password={{ sonar_jdbc_password }}"
+    - regexp: "^sonar.jdbc.url"
+      line: "sonar.jdbc.url=jdbc:postgresql://{{ sonar_jdbc_host }}:{{ sonar_jdbc_port }}/{{ sonar_jdbc_database }}"
+    - regexp: "^sonar.web.port"
+      line: "sonar.web.port={{ sonar_web_port }}"
