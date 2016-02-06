@@ -1,0 +1,50 @@
+- name: Check sonar old plugin java exist
+  stat: path=/usr/local/sonar/extensions/plugins/sonar-java-plugin-3.0.jar
+  register: sonar_old_plugin_java
+
+- name: Check sonar old plugin java exist
+  stat: path=/usr/local/sonar/extensions/plugins/scm-git-plugin-1.0.jar
+  register: sonar_old_plugin_git
+
+- name: Check sonar old plugin java exist
+  stat: path=/usr/local/sonar/extensions/plugins/sonar-scm-svn-plugin-1.0.jar
+  register: sonar_old_plugin_svn
+
+- name: Download plugins
+  get_url: url={{ item.url }} dest='/usr/local/sonar/extensions/plugins/{{ item.file_name }}' force=no mode=0644
+  with_items:
+    - url: http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/sonar-scm-git-plugin/1.1/sonar-scm-git-plugin-1.1.jar
+      file_name: sonar-scm-git-plugin-1.1.jar
+    - url: https://sonarsource.bintray.com/Distribution/sonar-scm-svn-plugin/sonar-scm-svn-plugin-1.2.jar
+      file_name: sonar-scm-svn-plugin-1.2.jar
+    - url: https://sonarsource.bintray.com/Distribution/sonar-java-plugin/sonar-java-plugin-3.6.jar
+      file_name: sonar-java-plugin-3.6.jar
+    - url: https://sonarsource.bintray.com/Distribution/org.sonarsource.sonar-groovy-plugin/sonar-groovy-plugin-1.2.jar
+      file_name: sonar-groovy-plugin-1.2.jar
+    - url: http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/python/sonar-python-plugin/1.5/sonar-python-plugin-1.5.jar
+      file_name: sonar-python-plugin-1.5.jar
+    - url: https://sonarsource.bintray.com/Distribution/sonar-csharp-plugin/sonar-csharp-plugin-4.2.jar
+      file_name: sonar-csharp-plugin-4.2.jar
+    - url: https://sonarsource.bintray.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-2.8.jar
+      file_name: sonar-javascript-plugin-2.8.jar
+    - url: http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/java/sonar-checkstyle-plugin/2.3/sonar-checkstyle-plugin-2.3.jar
+      file_name: sonar-checkstyle-plugin-2.3.jar
+    - url: http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/sonar-cobertura-plugin/1.6.3/sonar-cobertura-plugin-1.6.3.jar
+      file_name: sonar-cobertura-plugin-1.6.3.jar
+    - url: https://sonarsource.bintray.com/Distribution/sonar-findbugs-plugin/sonar-findbugs-plugin-3.3.jar
+      file_name: sonar-findbugs-plugin-3.3.jar
+    - url: http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/java/sonar-pmd-plugin/2.4.1/sonar-pmd-plugin-2.4.1.jar
+      file_name: sonar-pmd-plugin-2.4.1.jar
+  register: sonar_new_plugin
+
+- name: Stop Sonar if plugin updated
+  service: name=sonar state=stopped
+  when: sonar_old_plugin_java.stat.exists or sonar_old_plugin_git.stat.exists or sonar_old_plugin_svn.stat.exists or sonar_new_plugin.changed
+
+- name: Delete old plugins
+  command: rm /usr/local/sonar/extensions/plugins/{{ item }}
+  when: sonar_old_plugin_java.stat.exists or sonar_old_plugin_git.stat.exists or sonar_old_plugin_svn.stat.exists
+  with_items:
+    - sonar-java-plugin-3.0.jar
+    - sonar-scm-git-plugin-1.0.jar
+    - sonar-scm-svn-plugin-1.0.jar
