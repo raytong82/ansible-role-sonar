@@ -2,12 +2,7 @@
 
 An Ansible Role that installs [SonarQube](http://www.sonarqube.org/) on RedHat/CentOS and Debian/Ubuntu Linux servers.
 
-## Disclaimer
-
-This project cloned from geerlingguy/ansible-role-sonar but included some refactoring to fit my own purposes, e.g.
-- rename files from yml to yaml
-- change from mysql to pgsql
-- add sonar plugin install and upgrade
+[![Build Status](https://travis-ci.org/raytong82/ansible-role-sonar.svg?branch=master)](https://travis-ci.org/raytong82/ansible-role-sonar)
 
 ## Requirements
 
@@ -49,6 +44,13 @@ JDBC settings for a connection to a jdbc database. Defaults presume the database
 ## License
 
 MIT / BSD
+
+## Disclaimer
+
+This project cloned from geerlingguy/ansible-role-sonar but included some refactoring to fit my own purposes, e.g.
+- rename files from yml to yaml
+- change from mysql to pgsql
+- add sonar plugin install and upgrade
 
 ## Original Author Information
 
