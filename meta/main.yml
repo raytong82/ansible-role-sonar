@@ -17,7 +17,3 @@ galaxy_info:
   galaxy_tags:
     - development
     - monitoring
-
-dependencies:
-  - java
-  - postgresql
