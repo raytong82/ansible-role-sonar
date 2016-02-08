@@ -13,4 +13,4 @@ sonar_jdbc_host: localhost
 sonar_jdbc_port: "5432"
 sonar_jdbc_database: sonar
 
-sonar_web_port: "39000"
+sonar_web_port: "9000"

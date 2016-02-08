@@ -1,0 +1,23 @@
+---
+galaxy_info:
+  author: raytong82
+  description: SonarQube for Linux
+  license: "license (BSD, MIT)"
+  min_ansible_version: 1.4
+  platforms:
+  - name: EL
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+  galaxy_tags:
+    - development
+    - monitoring
+
+dependencies:
+  - java
+  - postgresql
