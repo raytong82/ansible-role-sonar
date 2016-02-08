@@ -18,6 +18,6 @@ galaxy_info:
     - development
     - monitoring
 
-dependencies:
-  - java
-  - postgresql
+#dependencies:
+#  - java
+#  - postgresql
