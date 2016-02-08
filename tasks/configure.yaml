@@ -1,4 +1,7 @@
 ---
+- name: Set directory permission
+  file: path=/usr/local/sonar/conf mode=0777
+
 - name: Configure SonarQube JDBC settings.
   lineinfile:
     dest: /usr/local/sonar/conf/sonar.properties
