@@ -38,5 +38,5 @@ script:
   # SonarQube can take a while to start initially.
   - sleep 60
 
-  # Check if SonarQube responds to requests on port 9000.
-  - curl http://localhost:9000/
+  # Check if SonarQube responds to requests on port 39000.
+  - curl http://localhost:39000/
