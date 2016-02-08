@@ -1,3 +1,6 @@
+- name: Set directory permission
+  file: path=/usr/local/sonar/extensions/plugins mode=0777
+
 - name: Check sonar old plugin java exist
   stat: path=/usr/local/sonar/extensions/plugins/sonar-java-plugin-3.0.jar
   register: sonar_old_plugin_java
